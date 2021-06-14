@@ -13,8 +13,12 @@ class Graphic(GraphicMixin, models.Model):
     text_status = models.TextField(null=True, blank=True)
 
     def create_graphic(self):
-        _image = self.create(x=self.t_days, y=self.func)
-        self.image = _image
+        try:
+            _image = self.create(x=self.t_days, y=self.func)
+            self.image = _image
+        except Exception as ex:
+            self.text_status = str(ex)
+
         self.save()
 
     class Meta:

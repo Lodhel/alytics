@@ -22,7 +22,7 @@ schema_view = get_schema_view(
 )
 
 router = DefaultRouter()
-router.register('profile', views.GraphicViewSet)
+router.register('graphic', views.GraphicViewSet)
 
 
 urlpatterns = [
