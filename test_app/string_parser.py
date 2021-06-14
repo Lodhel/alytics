@@ -74,6 +74,19 @@ def get_result(formula):
     month_days = MONTHS[month]
     year = int(datetime.datetime.now().year)
 
+    if day <= 0:
+        while day <= 0:
+            if day == 0:
+                month -= 1
+                if month == 0:
+                    month = 1
+                    year -= 1
+            day += month_days
+            month -= 1
+            if month == 0:
+                month = 1
+                year -= 1
+
     if day > month_days:
         while day > month_days:
             day -= month_days
