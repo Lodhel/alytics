@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--zf_wy35j30r-7l+w3k!ha#^jivd^h&-7pm3f6(z(94a#(*6^_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -76,11 +76,15 @@ WSGI_APPLICATION = 'test_pr.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
+            "NAME": os.environ.get("SQL_DATABASE", 'test'),
+            "USER": os.environ.get("SQL_USER", "postgres"),
+            "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+            "HOST": os.environ.get("SQL_HOST", "localhost"),
+            "PORT": os.environ.get("SQL_PORT", 5432),
+        }
     }
-}
 
 
 # Password validation

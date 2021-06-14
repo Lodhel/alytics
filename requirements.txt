@@ -4,5 +4,7 @@ djangorestframework==3.12.4
 matplotlib==2.1.2
 numpy==1.19.5
 Pillow==8.2.0
+psycopg2-binary==2.8.6
 redis==3.4.1
 requests==2.25.1
+tk==0.1.0
