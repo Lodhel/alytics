@@ -1,4 +1,3 @@
-import numpy as np
 from django.db import models
 import datetime
 
@@ -14,12 +13,9 @@ class Graphic(GraphicMixin, models.Model):
     text_status = models.TextField(null=True, blank=True)
 
     def create_graphic(self):
-        _image = self.create(x=np.linspace(-40, 40, 10000), y=self.func)
+        _image = self.create(x=self.t_days, y=self.func)
         self.image = _image
         self.save()
-
-    def count_t(self):
-        return [datetime.datetime.now() - datetime.timedelta(days=self.t_days), datetime.datetime.now()]
 
     class Meta:
         db_table = "graphics"
